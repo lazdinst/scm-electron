@@ -74,8 +74,8 @@ export default {
     {
       name: 'protoss',
       mins: 125,
-      gas: 50
-    }
+      gas: 50,
+    },
   ],
   zerg: [
     {
@@ -151,8 +151,8 @@ export default {
     {
       name: 'zerg',
       mins: 125,
-      gas: 50
-    }
+      gas: 50,
+    },
   ],
   terran: [
     {
@@ -228,7 +228,7 @@ export default {
     {
       name: 'terran',
       mins: 125,
-      gas: 50
-    }
-  ]
+      gas: 50,
+    },
+  ],
 };
