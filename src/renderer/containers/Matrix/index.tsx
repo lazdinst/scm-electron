@@ -32,6 +32,7 @@ function Matrix(): React.JSX.Element {
   useEffect(() => {
     if (socket) {
       socket.on('totalConnections', (count: number) => {
+        console.log('Total Connections From Socket:', count);
         setTotalUsers(count);
       });
 
@@ -45,6 +46,7 @@ function Matrix(): React.JSX.Element {
   useEffect(() => {
     if (socket) {
       socket.on('receiveJson', (data: any) => {
+        console.log('Received Socket Message Data:', data);
         setChat((prevChat) => [...prevChat, data.message]);
       });
 

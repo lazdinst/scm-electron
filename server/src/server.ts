@@ -29,7 +29,8 @@ io.on('connection', (socket) => {
   // Handle JSON message from client
   socket.on('sendJson', (data) => {
     // Echo received JSON back to the sender
-    socket.emit('receiveJson', data);
+    // socket.emit('receiveJson', data);
+    io.emit('receiveJson', data);
   });
 
   socket.on('disconnect', () => {
