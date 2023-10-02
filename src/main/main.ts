@@ -28,8 +28,7 @@ class AppUpdater {
   }
 }
 
-let mainWindow: BrowserWindow | null = null;
-let windows: BrowserWindow[] = [];
+const windows: BrowserWindow[] = [];
 
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
@@ -139,7 +138,7 @@ app
   .whenReady()
   .then(async () => {
     createWindow();
-    createWindow();
+    // createWindow();
     const result = await dbConnectionTest();
     console.log(result);
     setupDBHandlers();
