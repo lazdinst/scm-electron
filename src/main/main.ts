@@ -10,8 +10,13 @@
  */
 import path from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
+
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
+
+import { dbConnectionTest } from './db';
+import setupDBHandlers from './ipcHandlers/dbHandlers';
+
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 
@@ -115,7 +120,6 @@ const createWindow = async () => {
 /**
  * Add event listeners...
  */
-
 app.on('window-all-closed', () => {
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed
@@ -126,8 +130,11 @@ app.on('window-all-closed', () => {
 
 app
   .whenReady()
-  .then(() => {
+  .then(async () => {
     createWindow();
+    const result = await dbConnectionTest();
+    console.log(result);
+    setupDBHandlers();
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.
